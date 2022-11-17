@@ -106,6 +106,9 @@ jobs:
 
   sonar_analysis:
     runs-on: ubuntu-latest
+    env:
+      SERVICE_NAME: oidc-ui
+      SERVICE_LOCATION: oidc-ui
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -118,8 +121,7 @@ jobs:
         run: npm install --ignore-scripts
 
       - name: npm build
-        run:  |
-         npm run-script build -- --prod --base-href . --output-path=dist
+        run: cd ${{ env.SERVICE_LOCATION }} && npm run-script build -- --prod --base-href . --output-path=dist
 
       - name: Setup branch and env
         run: |
