@@ -122,7 +122,7 @@ jobs:
         run: npm install --ignore-scripts
 
       - name: npm build
-        run: cd ${{ env.SERVICE_LOCATION }} && npm run-script build -- --prod --base-href . --output-path=dist
+        run: npm run-script build -- --prod --base-href . --output-path=dist
 
       - name: Setup branch and env
         run: |
@@ -133,7 +133,7 @@ jobs:
         run: |
           echo "sonar.host.url=https://sonarcloud.io/
              sonar.login=${{ secrets.SONAR_TOKEN }}
-             sonar.projectKey=mosip_oidc-ui
+             sonar.projectKey=mosip_idp-ui
              sonar.organization=${{ secrets.ORG_KEY }}
              sonar.sourceEncoding=UTF-8
              sonar.sources=src
