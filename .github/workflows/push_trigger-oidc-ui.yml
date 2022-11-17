@@ -119,7 +119,6 @@ jobs:
 
       - name: npm build
         run:  |
-         cd oidc-ui
          npm run-script build -- --prod --base-href . --output-path=dist
 
       - name: Setup branch and env
