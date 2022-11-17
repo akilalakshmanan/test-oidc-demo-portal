@@ -110,6 +110,7 @@ jobs:
       NAMESPACE: ${{ secrets. dev_namespace_docker_hub }}
       SERVICE_NAME: oidc-ui
       SERVICE_LOCATION: oidc-ui
+      CI: false
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -122,7 +123,7 @@ jobs:
         run: cd ${{ env.SERVICE_LOCATION }} && npm install --ignore-scripts
 
       - name: npm build
-        run: cd ${{ env.SERVICE_LOCATION }} && npm run-script build -- --prod --base-href . --output-path=dist
+        run: cd ${{ env.SERVICE_LOCATION }} && export process.env.CI=${{ env.CI }} && npm run-script build -- --prod --base-href . --output-path=dist
 
       - name: Setup branch and env
         run: |
