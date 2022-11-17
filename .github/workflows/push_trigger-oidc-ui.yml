@@ -122,7 +122,8 @@ jobs:
         run: npm install --ignore-scripts
 
       - name: npm build
-        run: cd ${{ env.SERVICE_LOCATION }} && npm run-script build --prod --base-href . --output-path=dist
+        run: cd ${{ env.SERVICE_LOCATION }} && npm run build -- --configuration production
+        # npm run-script build -- --prod --base-href . --output-path=dist
 
       - name: Setup branch and env
         run: |
