@@ -1,5 +1,5 @@
 {
-  "name": "mosip-oidc",
+  "name": "mosip-idp",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
